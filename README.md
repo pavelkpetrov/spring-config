@@ -1,15 +1,26 @@
-#Spring Demo to show configuration service usage
+#Spring Demo to show configuration service usage with profiles and properties refresh
 
 Eureka server url : http://localhost:8761/
 Config server status check url for  config-client service :  http://localhost:8888/config-client/info
+Config server status check url for  config-client service (TEST profile) :  http://localhost:8888/config-client-TEST/info
+
 Config-client service http://localhost:8080/message to check the current properties values.
+Config-client service (TEST profile) http://localhost:8081/message to check the current properties values.
 Config-client service refresh URL to refrech changeable properies: http://localhost:8080/actuator/refresh
+Config-client service refresh URL to refrech changeable properies (TEST profile): http://localhost:8081/actuator/refresh
 
 How to test:
 Change path to config/config-client.yml in the configuration-service\src\main\resources\bootstrap.yml 
-run Eureka service            mvn spring-boot:run -pl eureka-service
-run Config service            mvn spring-boot:run -pl configuration-service
-run Config client service     mvn spring-boot:run -pl configuration-client
+run Eureka service         
+   - mvn spring-boot:run -pl eureka-service
+run Config service            
+   - mvn spring-boot:run -pl configuration-service
+run Config client service     
+   -  mvn spring-boot:run -pl configuration-client
+run Config client service with the TEST profile: 
+
+   - mvn spring-boot:run -pl configuration-client -Dspring.profiles.active=TEST -Dserver.port=8081
+
 In the browser request url: http://localhost:8888/config-client/info
 
 Result:{"name":"config-client","profiles":["info"],"label":null,"version":null,"state":null,"propertySources":[{"name":"file:///c:/Users/pavelp/Documents/config/config-client.yml","source":{"test.message":"Hello config initial","changeable.property":"Changeable property initial"}}]}
