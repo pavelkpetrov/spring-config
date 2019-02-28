@@ -1,0 +1,4 @@
+test:
+  message: Hello config initial
+changeable:
+  property: Changeable property initial

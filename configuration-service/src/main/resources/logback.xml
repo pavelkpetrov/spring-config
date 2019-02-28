@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false" scan="true" scanPeriod="30 seconds">
+
+    <conversionRule conversionWord="tid" converterClass="org.ameba.logging.ThreadIdProvider" />
+
+    <variable scope="context" name="mdcPattern" value="%replace(;%X{MSGKEY};%X{MSGDATA}){';+( |$)', ''}" />
+
+    <property name="LOG_TEMP" value="/tmp" />
+    <property name="MODULE_NAME" value="CORE" />
+    <property name="SERVICE_NAME" value="CS" />
+
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%thread] %highlight(%-5level) %cyan(%logger{15}) - %msg %n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>TRACE</level>
+        </filter>
+    </appender>
+
+    <logger name="org.springframework.jmx" level="WARN"/>
+    <logger name="org.springframework.boot.actuate.endpoint.jmx" level="WARN"/>
+    <logger name="org.springframework.cloud.bootstrap.config" level="OFF"/>
+    <logger name="org.springframework.cloud.config.server" level="OFF"/>
+    <logger name="org.springframework.beans.factory.annotation" level="OFF"/>
+    <logger name="org.springframework.context.annotation" level="OFF"/>
+    <logger name="com.netflix" level="WARN"/>
+    <logger name="org.ameba" level="DEBUG"/>
+    <logger name="io.interface21" level="DEBUG"/>
+    <logger name="INTEGRATION_LAYER_EXCEPTION" level="ERROR" />
+    <logger name="SERVICE_LAYER_EXCEPTION" level="ERROR" />
+    <logger name="SERVICE_LAYER_ACCESS" level="DEBUG" />
+    <logger name="PRESENTATION_LAYER_EXCEPTION" level="ERROR" />
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+</configuration>

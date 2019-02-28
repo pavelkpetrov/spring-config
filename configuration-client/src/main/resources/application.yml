@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: config-client
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+health:
+  config:
+    enabled: true
+
+management:
+  security:
+    enabled: false

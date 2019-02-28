@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          searchLocations: file:///c:/Users/pavelp/Documents/config
+
+server:
+  port: ${PORT:8888}
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
