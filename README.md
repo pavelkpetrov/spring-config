@@ -16,7 +16,7 @@ Result:{"name":"config-client","profiles":["info"],"label":null,"version":null,"
 
 In the browser request url: http://localhost:8080/message
 
-Result : Application :config-client | current unchangeable property test.message=Hello config new | current changeable value of propertyConfiguration.property=Changeable property initial
+Result : Application :config-client | current unchangeable property test.message=Hello config initial | current changeable value of propertyConfiguration.property=Changeable property initial
 
 Change in the config/config-client.yml prolerty:
  "Hello config initial" to "Hello config changed"
@@ -30,6 +30,6 @@ In the postman execute URL POST: http://localhost:8080/actuator/refresh
 
 In the browser request url: http://localhost:8080/message
 
-Result : Application :config-client | current unchangeable property test.message=Hello config new | current changeable value of propertyConfiguration.property=Changeable property changed
+Result : Application :config-client | current unchangeable property test.message=Hello config initial | current changeable value of propertyConfiguration.property=Changeable property changed
 
  
