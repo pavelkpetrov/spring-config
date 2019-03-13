@@ -12,3 +12,10 @@ health:
 management:
   security:
     enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+endpoints:
+  actuator:
+    enabled: true
